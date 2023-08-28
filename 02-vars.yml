@@ -8,10 +8,11 @@
        msg: Value of the URL is {{URL}}
 
 
-    - name: printing the variable names
+    - name: demo on using local variables
       ansible.builtin.debug:
        msg: Value of the URL's is {{URL}}
-
+      vars:
+       URL: task.google.com
     
 
 

@@ -16,4 +16,5 @@
     - name: Run this action
       ansible.builtin.debug:
        msg: Action is true 
-      when: ansible_distribution == "CentOS"
+      when: action
+

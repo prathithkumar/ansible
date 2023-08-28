@@ -1,0 +1,7 @@
+- name: Demo on shell
+  hosts: all
+  gather_facts: no   #If we dont need facts to be gathered, we can mention this as no 
+  tasks:
+    - name: Running the uptime command
+      ansible.builtin.shell: uptime
+      

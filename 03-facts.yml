@@ -1,6 +1,9 @@
 - name: Demo on facts
-  hosts: all       
+  hosts: all
+  gather_facts: no   #If we dont need facts to be gathered, we can mention this as no 
   tasks:
     - name: printing the default variable
       ansible.builtin.debug:
-       msg: Server flavour is "{{ansible_distribution}}"
+       msg: Server flavour is {{ansible_distribution}}
+
+

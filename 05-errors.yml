@@ -1,0 +1,16 @@
+- name:  Demo on errors 
+  hosts: all
+    #If we dont need facts to be gathered, we can mention this as no 
+  tasks:
+    - name: Check tomcat is running or not
+      ansible.builtin.shell: ps -ef | grep java | grep -v grep
+      register: OUT
+
+    - name: Printing the  uptime
+      ansible.builtin.debug: 
+       msg: "{{OUT}}"
+
+    - name: Declaring the variables
+      set_fact:
+       EXITCODE:  "{{OUT.rc}}"
+    

@@ -28,9 +28,9 @@
     #   ansible.builtin.debug:
     #    msg: Name of the person is {{URNAME}}
 
-        - name: This is env specific
-          ansible.builtin.debug:
-            msg: Type of Instance to be used {{INS_TYPE}}
+    - name: This is env specific
+      ansible.builtin.debug:
+       msg: Type of Instance to be used {{INS_TYPE}}
       
    
 

@@ -1,6 +1,5 @@
 - name: Demo on using  tags
   hosts: all
-
   tasks:
     - name: This is a frontend task
       ansible.builtin.debug:

@@ -1,4 +1,4 @@
-- name: Demo on loops
+- name: Demo on installing
   hosts: all
   become: yes
   tasks:

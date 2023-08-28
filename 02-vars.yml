@@ -2,6 +2,8 @@
   hosts: all       
   vars:                       # Global Variables : All the tasks of this play can access this variable
    URL: play.google.com
+  vars_files:
+     - dev.yml
   vars_prompt:
    - name: URNAME
      prompt: Enter your name
@@ -22,9 +24,14 @@
 #      ansible.builtin.debug:
 #       msg: Value of the CLIURL is {{CLIURL}}
 
-    - name: Printing prompt variable
-      ansible.builtin.debug:
-       msg: Name of the person is {{URNAME}}
+    # - name: Printing prompt variable
+    #   ansible.builtin.debug:
+    #    msg: Name of the person is {{URNAME}}
+
+        - name: This is env specific
+          ansible.builtin.debug:
+            msg: Type of Instance to be used {{INS_TYPE}}
+      
    
 
 

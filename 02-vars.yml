@@ -1,0 +1,14 @@
+- name: Demo on vars usage
+  hosts: all       
+  vars:                       # Global Variables : All the tasks of this play can access this variable
+   URL: play.google.com
+  tasks:
+    - name: printing the variable
+      ansible.builtin.debug:
+       msg: Value of the URL is {{URL}}
+
+
+# NOTE : if you would like to print a variable, then enclose the variable in "{{varName}}" and there is no single quote concept 
+#        and if the variables is present in between the string of words, you dont have to enclose them in quotes.
+
+# No two tasks of a play can have a same name.

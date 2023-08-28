@@ -6,11 +6,8 @@
       ansible.builtin.shell: ps -ef | grep java | grep -v grep
       register: OUT
 
-    - name: Printing the  uptime
+    - name: Starting Tomcat
       ansible.builtin.debug: 
-       msg: "{{OUT}}"
+       msg: Tomcat Is started
 
-    - name: Declaring the variables
-      set_fact:
-       EXITCODE:  "{{OUT.rc}}"
     

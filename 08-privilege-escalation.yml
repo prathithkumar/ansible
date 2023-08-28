@@ -1,5 +1,6 @@
 - name: Demo on privilege escalation
   hosts: all
+  become: yes               # privilege escalation : Runs the playbook as a root user
   tasks:
     - name: Chcek the user ID
       ansible.builtin.shell: id

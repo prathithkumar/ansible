@@ -14,6 +14,10 @@
       vars:
        URL: task.google.com
     
+    - name: demo on using undelated variables
+      ansible.builtin.debug:
+       msg: Value of the CLIURL is {{CLIURL}}
+   
 
 
 # NOTE : if you would like to print a variable, then enclose the variable in "{{varName}}" and there is no single quote concept 

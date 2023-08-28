@@ -2,6 +2,9 @@
   hosts: all       
   vars:                       # Global Variables : All the tasks of this play can access this variable
    URL: play.google.com
+  vars_prompt:
+   - name: URNAME
+     prompt: Enter your name
   tasks:
     - name: printing the variable name
       ansible.builtin.debug:
@@ -17,6 +20,10 @@
     - name: demo on using undelated variables
       ansible.builtin.debug:
        msg: Value of the CLIURL is {{CLIURL}}
+
+    - name: Printing prompt variable
+      ansible.builtin.debug:
+       msg: Name of the person is {{CLIURLNAME}}
    
 
 

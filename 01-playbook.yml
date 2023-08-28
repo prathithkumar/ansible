@@ -8,3 +8,10 @@
     - name: printing Hello! from task2 of play1
       ansible.builtin.debug:
        msg: "DevOps Job"
+
+- name: Play2 
+  hosts: all       #groupName in the inventory file
+  tasks:
+    - name: printing Hello! from task1 of play2
+      ansible.builtin.debug:
+       msg: "Test Script 12333 : task1 from play2"

@@ -21,6 +21,6 @@
     - name: Run this task when the action variable is declared
       ansible.builtin.debug:
        msg: Action variable is declared 
-      when: action is defined
+      when: action is not defined
   
 

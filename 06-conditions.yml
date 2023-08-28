@@ -1,0 +1,13 @@
+- name: Demo on Conditions
+  hosts: all
+  tasks:
+    - name: Run this only when the distrubution is CentOs
+      ansible.builtin.debug:
+       msg: Welcome to Centos {{ansible_distribution}}
+      when: ansible_distribution == "CentOS"
+
+    - name: Run this only when the distrubution is Ubuntu
+      ansible.builtin.debug:
+       msg: Welcome to Centos {{ansible_distribution}}
+      when: ansible_distribution == "Ubuntu"
+

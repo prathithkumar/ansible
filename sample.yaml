@@ -1,0 +1,6 @@
+name: Prathith  #Dictonary
+
+courses:        #list
+    - aws       #Values
+    - devops
+    - bash

@@ -1,7 +1,7 @@
 - name: Configuring Nodejs
   ansibile.builtin.shell: curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -
 
-- name: installing Nginx
+- name: installing Nodejs
   ansible.builtin.package:
       name: nodejs
       state: present

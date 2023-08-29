@@ -12,8 +12,8 @@
 - name: Configuring the {{COMPONENT}} Visibility
   ansible.builtin.replace:
     path: /etc/mongod.conf
-    regexp: "127.0.0.1"
-    replace: "0.0.0.0"
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
 
 
 - name: Starting {{COMPONENT}}
@@ -30,8 +30,8 @@
 
 - name: Injecting the {{COMPONENT}} schema 
   community.mongodb.mongodb_shell:
-     file: "/tmp/mongodb-main/{{item}}.js"
-     idempotent: yes
+    file: "/tmp/mongodb-main/{{item}}.js"
+    idempotent: yes
   loop:
     - users
     - catalogue

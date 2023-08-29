@@ -30,5 +30,14 @@
     dest: /home/{{APPUSER}}/{{COMPONENT}}
     owner: "{{APPUSER}}"
     group: "{{APPUSER}}"
-    remote_src: yes                 
+    remote_src: yes     
+
+- name: Generating Artifacts with npm install
+  community.general.npm:
+    path: /home/{{APPUSER}}/{{COMPONENT}}/
+
+- name: Copying the systemd file
+  ansible.builtin.template:
+    src: systemd.service
+    dest: /etc/systemd/system/{{COMPONENT}}.service
 

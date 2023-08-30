@@ -5,8 +5,8 @@
 
 - name: Starting {{COMPONENT}}
   systemd:
-    name: {{COMPONENT}}
-    state: restarted 
+    name: "{{COMPONENT}}"
+    state: Starting 
     enabled: yes
     daemon_reload: yes
 

@@ -6,7 +6,7 @@
 - name: Starting {{COMPONENT}}
   systemd:
     name: "{{COMPONENT}}"
-    state: stopped
+    state: restarted
     enabled: yes
     daemon_reload: yes
 

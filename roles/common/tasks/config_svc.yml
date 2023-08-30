@@ -8,5 +8,5 @@
     name: "{{COMPONENT}}"
     state: restarted
     enabled: yes
-    daemon_reload: no
+    daemon_reload: yes
 

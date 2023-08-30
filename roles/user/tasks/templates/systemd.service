@@ -7,6 +7,6 @@ Environment=REDIS_HOST=redis-dev.roboshop.internal
 Environment=MONGO_URL="mongodb://mongodb-dev.roboshop.internal:27017/users"
 ExecStart=/bin/node /home/roboshop/user/server.js
 SyslogIdentifier=user
-s
+
 [Install]
 WantedBy=multi-user.target

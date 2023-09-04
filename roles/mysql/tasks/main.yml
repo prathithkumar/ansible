@@ -21,26 +21,35 @@
     src: /var/log/mysqld.log
   register: pwd_log
 
-- name: Extracting the root password
-  ansible.builtin.set_fact:
-    DEFAULT_PASSWORD: "{{ pwd_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ') | split(' ') | last }}"
+# If any of the task in the block fails, then Rescue tasks will be executed.
+- name: Verifying the password
+  block:
+    - name: Fetch MySQL Version
+      community.mysql.mysql_info:
+          login_user: root
+          login_password: RoboShop@1
+          filter: version
+  rescue:
+    - name: Extracting the root password
+      ansible.builtin.set_fact:
+        DEFAULT_PASSWORD: "{{ pwd_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ') | split(' ') | last }}"
 
-- name: Resetting Default root Password of {{COMPONENT}}
-  ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1'" | mysql --connect-expired-password -uroot -p{{DEFAULT_PASSWORD}} 
+    - name: Resetting Default root Password of {{COMPONENT}}
+      ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1'" | mysql --connect-expired-password -uroot -p{{DEFAULT_PASSWORD}} 
   
-- name: Removing {{COMPONENT}} password validate plugin
-  ansible.builtin.shell: echo "Uninstall plugin Validate_password" | mysql -uroot -pRoboShop@1  
+    - name: Removing {{COMPONENT}} password validate plugin
+      ansible.builtin.shell: echo "Uninstall plugin Validate_password" | mysql -uroot -pRoboShop@1  
   
 
-# - name: Download and extracting {{COMPONENT}}
-#   ansible.builtin.unarchive:
-#       src: https://github.com/stans-robot-project/{{COMPONENT}}/archive/main.zip
-#       dest: /tmp 
-#       remote_src: yes  
+    - name: Download and extracting {{COMPONENT}}
+      ansible.builtin.unarchive:
+      src: https://github.com/stans-robot-project/{{COMPONENT}}/archive/main.zip
+      dest: /tmp 
+      remote_src: yes  
 
 
 
-- name: Configuring Name
-  ansible.builtin.include_role:
-    name: common
-    tasks_from: set_name
+    - name: Configuring Name
+      ansible.builtin.include_role:
+      name: common
+      tasks_from: set_name

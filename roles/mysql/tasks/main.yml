@@ -41,15 +41,15 @@
       ansible.builtin.shell: echo "Uninstall plugin Validate_password" | mysql -uroot -pRoboShop@1  
   
 
-    - name: Download and extracting {{COMPONENT}}
-      ansible.builtin.unarchive:
-      src: https://github.com/stans-robot-project/{{COMPONENT}}/archive/main.zip
-      dest: /tmp 
-      remote_src: yes  
+- name: Download and extracting {{COMPONENT}}
+  ansible.builtin.unarchive:
+    src: https://github.com/stans-robot-project/{{COMPONENT}}/archive/main.zip
+    dest: /tmp 
+    remote_src: yes  
 
 
 
-    - name: Configuring Name
-      ansible.builtin.include_role:
-      name: common
-      tasks_from: set_name
+- name: Configuring Name
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: set_name

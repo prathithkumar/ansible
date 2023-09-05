@@ -8,7 +8,8 @@
   ansible.builtin.package:
       name: 
          - mysql-community-server
-         - PyMySQL
+         - MySQL-python
+         - python3-PyMySQL
       state: present
 
 
@@ -42,7 +43,8 @@
        ansible.builtin.shell: echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ROOT_PASSWORD}}';" | mysql --connect-expired-password -uroot -p{{DEFAULT_PASSWORD}} 
   
      - name: Removing {{COMPONENT}} password validate plugin
-       ansible.builtin.shell: echo "Uninstall plugin Validate_password" | mysql -uroot -pRoboShop@1  
+       ansible.builtin.shell: echo "Uninstall plugin Validate_password;" | mysql -uroot -pRoboShop@1  
+       ignore_errors: yes
   
 
 - name: Download and extracting {{COMPONENT}}

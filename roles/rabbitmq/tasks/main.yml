@@ -1,0 +1,2 @@
+- name: Generating Artifacts with npm install
+  ansible.builtin.shell: mvn clean package && mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar

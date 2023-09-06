@@ -6,8 +6,8 @@
 
 - name: installing {{COMPONENT}}
   ansible.builtin.package:
-    name: mongodb-org
-    state: present
+      name: mongodb-org
+      state: present
 
 - name: Starting {{COMPONENT}}
   systemd:

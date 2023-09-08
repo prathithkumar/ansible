@@ -11,7 +11,16 @@ pipeline {
     // }
     
     stages {
-        stage('Performing a dry run') {
+
+        stage('Lint Checks'){
+            steps {
+                sh '''
+                    echo ****** Starting Lint Checks *****
+                    echo ****** Lint Checks Completed *****
+                '''
+            }
+        }
+        stage('Performing a dry run') {           // This stage should run only when we raise a PULL REQUEST
             steps {
                 sh '''
                     env
